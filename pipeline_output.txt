@@ -1,0 +1,82 @@
+============================================================
+  ELLIPTIC FRAUD DETECTION - RISK SCORING ENGINE
+============================================================
+
+[1/4] Keşifçi veri analizi...
+
+=== Keşifçi Veri Analizi (EDA) ===
+-> class_imbalance.png kaydedildi
+-> time_step_analysis.png kaydedildi
+-> 2d_pca_scatter.png kaydedildi
+-> 2d_tsne_scatter.png kaydedildi
+=== EDA tamamlandı ===
+
+
+[2/4] Veri ön işleme...
+Veri seti boyutu: 46564 satır, 165 ham özellik
+PCA sonrası: 25 bileşen
+PCA açıklanan varyans: 71.73%
+
+Eğitim seti: 37251 satır
+Test seti:   9313 satır
+
+[3/4] Modeller eğitiliyor...
+
+=== KNN Model Eğitimi ===
+K= 3 → Precision: 0.8799, Recall: 0.8383, F1: 0.8586
+K= 5 → Precision: 0.8899, Recall: 0.8273, F1: 0.8575
+K= 7 → Precision: 0.8870, Recall: 0.8119, F1: 0.8478
+K= 9 → Precision: 0.8872, Recall: 0.8130, F1: 0.8485
+K=11 → Precision: 0.8931, Recall: 0.8086, F1: 0.8487
+
+En iyi K: 3 (F1=0.8586)
+
+=== YSA (MLP) Model Eğitimi ===
+Katmanlar=(64, 32) → Precision: 0.9183, Recall: 0.8163, F1: 0.8643
+Katmanlar=(128, 64, 32) → Precision: 0.9377, Recall: 0.8284, F1: 0.8797
+Katmanlar=(64, 64, 32) → Precision: 0.9336, Recall: 0.8042, F1: 0.8641
+
+En iyi yapılandırma: (128, 64, 32) (F1=0.8797)
+
+[4/4] Model karşılaştırması...
+
+============================================================
+         MODEL KARŞILAŞTIRMASI
+============================================================
+Metric       |        KNN |        YSA
+----------------------------------------
+Precision    |     0.8799 |     0.9377
+Recall       |     0.8383 |     0.8284
+F1           |     0.8586 |     0.8797
+
+--- KNN Sınıflandırma Raporu ---
+              precision    recall  f1-score   support
+
+   Legal (0)       0.98      0.99      0.99      8404
+ Illegal (1)       0.88      0.84      0.86       909
+
+    accuracy                           0.97      9313
+   macro avg       0.93      0.91      0.92      9313
+weighted avg       0.97      0.97      0.97      9313
+
+--- YSA Sınıflandırma Raporu ---
+              precision    recall  f1-score   support
+
+   Legal (0)       0.98      0.99      0.99      8404
+ Illegal (1)       0.94      0.83      0.88       909
+
+    accuracy                           0.98      9313
+   macro avg       0.96      0.91      0.93      9313
+weighted avg       0.98      0.98      0.98      9313
+
+Karışıklık matrisleri kaydedildi: /home/erguvenburak/Belgeler/elliptic-fraud-detection/reports/figures/
+-> model_comparison.png kaydedildi
+
+============================================================
+  TÜM İŞLEMLER TAMAMLANDI
+============================================================
+
+Çıktılar:
+  - Grafikler: reports/figures/
+  - PCA bileşen sayısı: 25
+  - PCA açıklanan varyans: 71.7%
