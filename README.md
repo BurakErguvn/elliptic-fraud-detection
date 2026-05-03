@@ -1,5 +1,7 @@
 # Elliptic Fraud Detection — Risk Scoring Engine
 
+*Read this in other languages: [Türkçe](README-TR.md)*
+
 > Autonomous risk scoring engine that detects illicit Bitcoin transactions using the Elliptic Data Set, combining graph-based transaction features with KNN and Neural Network (MLP) classifiers.
 
 ## Table of Contents
